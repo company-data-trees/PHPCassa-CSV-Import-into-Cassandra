@@ -1,6 +1,28 @@
 PHPCassa CSV Import into Cassandra
+========
+
+* Requires PHPCassa (https://github.com/thobbs/phpcassa)
 
 
-Requires PHPCassa (https://github.com/thobbs/phpcassa)
+Opening a connection
+---------------------
+
+$importer = new CassandraCSVImport($keyName, $mapColumns);
+$importer->connect( '123.123.123.123', 'keyspace');
+
+Set up Cassandra <==> CSV mapping
+---------------------
+
+
+$mapColumns = array('cass_col_1' 		=> 'csv_col_1'
+					'cass_col_2' 		=> 'csv_col_2'
+					'cass_col_3' 		=> 'csv_col_3'
+					);
+
+
+Run the import
+---------------------
+
+$numRows = $importer->import('path/to/csv', 'columnfamily');
 
 
